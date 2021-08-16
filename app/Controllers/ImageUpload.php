@@ -23,31 +23,31 @@ class ImageUpload extends BaseController
                 $fileName = time() . $image->getClientName();
                 $image->move('uploads', $fileName);
 
-                $db->table('gallery')->insert([
-                    'keterangan' => $this->request->getPost('keterangan'),
-                    'nama_file' => $fileName
-                ]);
+                // $db->table('gallery')->insert([
+                //     'keterangan' => $this->request->getPost('keterangan'),
+                //     'nama_file' => $fileName
+                // ]);
 
                 return redirect()->back()->with('success', 'Data berhasil disimpan');
             }
 
             return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
-        if ($this->validate($rules)) {
+        // if ($this->validate($rules)) {
 
-            $image = $this->request->getFile('image');
-            $fileName = time().$image->getClientName();
-            $image->move('uploads', $fileName);
+        //     $image = $this->request->getFile('image');
+        //     $fileName = time() . $image->getClientName();
+        //     $image->move('uploads', $fileName);
 
-            $db->table('gallery')->insert([
-                'keterangan' => $this->request->getPost('keterangan'),
-                'nama_file' => $fileName
-            ]);
-        
-            return redirect()->back()->with('success', 'Data berhasil disimpan');
-        }
+        //     $db->table('gallery')->insert([
+        //         'keterangan' => $this->request->getPost('keterangan'),
+        //         'nama_file' => $fileName
+        //     ]);
 
-        return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
+        //     return redirect()->back()->with('success', 'Data berhasil disimpan');
+        // }
+
+        // return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         return View('upload');
     }
 }

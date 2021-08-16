@@ -15,6 +15,12 @@
 <body>
     <div class="container">
         <div class="col-6">
+            <?php if (session()->has('success')) : ?>
+                <p class="text-success"><?= session()->getFlashdata('success') ?></p>
+            <?php endif; ?>
+            <?php if (session()->has('error')) : ?>
+                <p class="text-danger"><?= session()->getFlashdata('error') ?></p>
+            <?php endif; ?>
             <div class="card">
                 <div class="card-header">Image Upload</div>
                 <div class="card-body">
